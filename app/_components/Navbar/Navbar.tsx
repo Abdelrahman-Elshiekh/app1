@@ -1,0 +1,177 @@
+'use client'
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import React, { useState } from 'react'
+import imglogo from "../../../assets/images/ChatGPT Image Jan 31, 2026, 01_39_02 AM.png";
+import Image from 'next/image';
+import { signOut, useSession } from 'next-auth/react';
+
+export default function Navbar() {
+   const {data:session,status}= useSession()
+  console.log(status);
+
+  function Logout(){
+     signOut({
+      callbackUrl:"/login"
+     })
+
+  }
+  
+   const [open, setopen] = useState(false)
+   const active=usePathname()
+
+
+  const path = [
+    { href: "/", content: "Home" },
+    { href: "/products", content: "Products" },
+    { href: "/cart", content: "Cart" },
+    { href: "/brands", content: "Brands" },
+  ];
+
+
+  const Authpath = [
+    { href: "/login", content: "Login" },
+    { href: "/register", content: "Register" },
+    
+  ];
+
+  return (
+    <>
+      <nav className="bg-gray-300">
+        <div className="max-w-screen-xl flex flex-wrap md:flex-nowrap gap-16 items-center justify-between mx-auto p-4">
+          <a
+            href="https://flowbite.com/"
+            className="flex items-center space-x-3 rtl:space-x-reverse"
+          >
+            <Image alt="logo" width={50} height={30} src={imglogo} />
+            <span className="self-center text-xl text-heading font-semibold whitespace-nowrap">
+              Fresh cart
+            </span>
+          </a>
+          <button
+            onClick={() => {
+              setopen(!open);
+            }}
+            data-collapse-toggle="navbar-default"
+            type="button"
+            className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-body rounded-base md:hidden hover:bg-neutral-secondary-soft hover:text-heading focus:outline-none focus:ring-2 focus:ring-neutral-tertiary"
+            aria-controls="navbar-default"
+            aria-expanded="false"
+          >
+            <span className="sr-only">Open main menu</span>
+            <svg
+              className="w-6 h-6"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              width={24}
+              height={24}
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeWidth={2}
+                d="M5 7h14M5 12h14M5 17h14"
+              />
+            </svg>
+          </button>
+          {open ? (
+            <div
+              className=" w-full md:flex justify-between  "
+              id="navbar-default"
+            >
+              <ul className="font-medium flex flex-col  px-4 md:p-0   rounded-base bg-neutral-secondary-soft md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-neutral-primary">
+                {path.map((elem) => {
+                  return (
+                    <li key={elem.content}>
+                      <Link
+                        href={elem.href}
+                        className={
+                          active === elem.href
+                            ? "active block py-2 px-3  bg-brand rounded md:bg-transparent md:text-fg-brand md:p-0"
+                            : "block py-2 px-3  bg-brand rounded md:bg-transparent md:text-fg-brand md:p-0"
+                        }
+                        aria-current="page"
+                      >
+                        {elem.content}
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+              <ul className="font-medium flex flex-col  p-4 md:p-0  rounded-base bg-neutral-secondary-soft md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-neutral-primary">
+                {Authpath.map((elem) => {
+                  return (
+                    <li key={elem.content}>
+                      <Link
+                        href={elem.href}
+                        className={
+                          active === elem.href
+                            ? "active block py-2 px-3  bg-brand rounded md:bg-transparent md:text-fg-brand md:p-0"
+                            : "block py-2 px-3  bg-brand rounded md:bg-transparent md:text-fg-brand md:p-0"
+                        }
+                        aria-current="page"
+                      >
+                        {elem.content}
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          ) : (
+            <div
+              className="hidden w-full md:flex justify-between  "
+              id="navbar-default"
+            >
+              <ul className="font-medium flex flex-col  p-4 md:p-0  border border-default rounded-base bg-neutral-secondary-soft md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-neutral-primary">
+                {path.map((elem) => {
+                  return (
+                    <li key={elem.content}>
+                      <Link
+                        href={elem.href}
+                        className={
+                          active === elem.href
+                            ? "active block py-2 px-3  bg-brand rounded md:bg-transparent md:text-fg-brand md:p-0"
+                            : "block py-2 px-3  bg-brand rounded md:bg-transparent md:text-fg-brand md:p-0"
+                        }
+                        aria-current="page"
+                      >
+                        {elem.content}
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+              <ul className="font-medium flex flex-col  p-4 md:p-0  border border-default rounded-base bg-neutral-secondary-soft md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-neutral-primary">
+                {status === "authenticated" ? (
+                  <>
+                    <li>Hi,{session?.user?.name}</li>
+                    <li onClick={Logout} className="cursor-pointer">logout</li>
+                  </>
+                ) : (
+                  Authpath.map((elem) => {
+                    return (
+                      <li key={elem.content}>
+                        <Link
+                          href={elem.href}
+                          className="block py-2 px-3  bg-brand rounded md:bg-transparent md:text-fg-brand md:p-0"
+                          aria-current="page"
+                        >
+                          {elem.content}
+                        </Link>
+                      </li>
+                    );
+                  })
+                )}
+
+               
+              </ul>
+            </div>
+          )}
+        </div>
+      </nav>
+    </>
+  );
+}
