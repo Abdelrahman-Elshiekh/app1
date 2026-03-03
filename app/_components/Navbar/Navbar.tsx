@@ -166,7 +166,7 @@ export default function Navbar() {
                   <>
                     <li>Hi,{session?.user?.name}</li>
                     <li className="relative">
-                      {cartdata?.numOfCartItems>0?<span className="bg-green-400 start-3 -top-[30px] absolute p-1 px-2 text-xl text-white rounded-full">
+                      { cartdata &&cartdata?.numOfCartItems>0?<span className="bg-green-400 start-3 -top-[30px] absolute p-1 px-2 text-xl text-white rounded-full">
                        {cartdata?.numOfCartItems}
                       </span>:""}
                       <Link href={"/cart"}>
