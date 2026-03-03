@@ -5,6 +5,7 @@ import Navbar from "./_components/Navbar/Navbar";
 import Footer from "./_components/Footer/Footer";
 import {Toaster} from "react-hot-toast"
 import Nextaouthprovider from "./Provider/nextaouthprovider";
+import Providers from "./Provider/react-quary-provider";
 
 
 const geistSans = Geist({
@@ -32,12 +33,14 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Nextaouthprovider>
-          <Toaster />
-          <Navbar />
-          <div className="container mx-auto max-w-4/5">{children}</div>
-          <Footer />
-        </Nextaouthprovider>
+        <Providers>
+          <Nextaouthprovider>
+            <Toaster />
+            <Navbar />
+            <div className="container mx-auto max-w-5/6">{children}</div>
+            <Footer />
+          </Nextaouthprovider>
+        </Providers>
       </body>
     </html>
   );

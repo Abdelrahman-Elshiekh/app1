@@ -14,8 +14,13 @@ import { Button } from "@/components/ui/button";
 import * as zod from "zod";
 import { signIn } from "next-auth/react";
 import toast from "react-hot-toast";
+import { useParams, useSearchParams } from "next/navigation";
 
 export default function Login() {
+   const searchparams= useSearchParams()
+   const callbackurl = searchparams.get("callback-url");
+   
+   
   const [islaoding, setislaoding] = useState(false)
   const Form = useForm({
     defaultValues: {
@@ -27,12 +32,12 @@ export default function Login() {
 
  async function submitform(values: zod.infer<typeof loginSchema>) {
     setislaoding(true)
-   const respones =await signIn('credentials',{
-      email:values.email,
-      password:values.password,
-      redirect:false,
-      callbackUrl:'/'
-    })
+   const respones = await signIn("credentials", {
+     email: values.email,
+     password: values.password,
+     redirect: false,
+     callbackUrl: callbackurl??"/"
+   });
     console.log(respones);
     if(respones?.ok){
 toast.success("successfull Login");
