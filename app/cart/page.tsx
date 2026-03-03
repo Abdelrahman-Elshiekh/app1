@@ -61,7 +61,7 @@ const { mutate: removecart, data } = useMutation({
     Quaryclient.invalidateQueries({ queryKey: ["get-cart"] });
   },
   onError: () => {
-    toast.success("error  ");
+    toast.error("error");
   },
 });
 
