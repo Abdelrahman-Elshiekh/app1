@@ -120,14 +120,14 @@ export default function Navbar() {
                   );
                 })}
               </ul>
-              <ul className="font-medium flex flex-col  justify-center text-2xl items-center  px-4 md:p-0 rounded-base bg-neutral-secondary-soft md:flex-row md:space-x-8 md:bg-neutral-primary">
+              <ul className="font-medium flex flex-col  justify-center text-2xl items-center   md:p-0 rounded-base bg-neutral-secondary-soft md:flex-row md:space-x-8 md:bg-neutral-primary">
                 {status === "authenticated" ? (
                   <>
                     <li className=" font-semibold">
                       Hi, {session?.user?.name}
                     </li>
 
-                    <li className="flex space-x-3">
+                    <li className="flex space-x-3 my-8">
                       <li className="relative">
                         {cartdata && cartdata?.numOfCartItems > 0 ? (
                           <span className="bg-green-400 start-3 -top-[30px] absolute p-1 px-2 text-xl text-white rounded-full">
