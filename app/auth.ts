@@ -31,7 +31,7 @@ export const AuthOptions: NextAuthOptions = {
 
         if ("token" in payload) {
           return {
-            id: payload.token,
+            id: "",
             user: payload.user,
             token: payload.token,
           };
@@ -44,15 +44,8 @@ export const AuthOptions: NextAuthOptions = {
   callbacks: {
     jwt: ({ token, user }) => {
       if (user) {
-        token.token = user.token; // نخزن التوكن
+        token.token = user.token;
         token.user = user.user;
-
-        try {
-          const decoded: any = jwt.decode(user.token);
-          token.user.id = decoded?.id || decoded?.sub; 
-        } catch (err) {
-          console.error("Error decoding JWT:", err);
-        }
       }
       return token;
     },

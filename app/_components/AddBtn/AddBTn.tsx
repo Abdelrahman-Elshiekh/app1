@@ -37,23 +37,25 @@ export default function AddBTn({ productId }: { productId :string}) {
     
   return (
     <>
-      <CardFooter className="flex justify-between justify-center">
-        <Button
-          onClick={() => {
-            addproducttocart(productId);
-          }}
-          className="bg-emerald-600"
-        >
-          add to cart
-        </Button>
-        <Button
-          onClick={() => {
-            addproducttowishlist(productId);
-          }}
-          className="bg-emerald-600"
-        >
-          add to wishlist
-        </Button>
+      <CardFooter className="flex justify-between">
+        <div className='flex flex-col space-y-5 '>
+          <Button 
+            onClick={() => {
+              addproducttocart(productId);
+            }}
+            className="bg-emerald-600 w-full"
+          >
+            add to cart
+          </Button>
+          <Button
+            onClick={() => {
+              addproducttowishlist(productId);
+            }}
+            className="bg-emerald-600 w-full"
+          >
+            add to wishlist
+          </Button>
+        </div>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
