@@ -15,6 +15,7 @@ import * as zod from "zod";
 import { signIn } from "next-auth/react";
 import toast from "react-hot-toast";
 import { useParams, useSearchParams } from "next/navigation";
+import Link from "next/link";
 
 export default function Login() {
    const searchparams= useSearchParams()
@@ -124,6 +125,10 @@ toast.success("successfull Login");
             )}
           </Button>
         </form>
+
+        <Button className="text-2xl w-full my-4 bg-emerald-700">
+          <Link href={`/forgotpassword`}> Forgot Your  Password ?</Link>
+        </Button>
       </div>
     </>
   );

@@ -10,7 +10,7 @@ export async function GET(req:NextRequest ){
  }
 
 
- const rep = await fetch(`${process.env.API}/cart`, {
+ const rep = await fetch(`${process.env.API}/wishlist`, {
    headers: {
      token: token.token,
      "content-type": "application/json",

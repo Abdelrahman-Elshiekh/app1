@@ -1,6 +1,7 @@
 'use client'
 import { addtocart } from '@/app/services/cart/add-to-cart';
 import { deletecartitem } from '@/app/services/cart/delete-cart';
+import { addtowishlist } from '@/app/services/Wishlist/add-to-wishlist';
 import { Button } from '@/components/ui/button';
 import { CardFooter } from '@/components/ui/card';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
@@ -22,17 +23,36 @@ export default function AddBTn({ productId }: { productId :string}) {
     });
    
 
-
-    // delete
-
-
+  const { data: wishlist, mutate: addproducttowishlist } = useMutation({
+    mutationFn: addtowishlist,
+    onSuccess: (data) => {
+      toast.success(data?.message);
+      Quaryclient.invalidateQueries({ queryKey: ["get-cart"] });
+    },
+    onError: (data) => {
+      toast.error("login first");
+    },
+  });
    
     
   return (
     <>
       <CardFooter className="flex justify-between">
-        <Button onClick={()=>{addproducttocart(productId);}} className="bg-emerald-600">
+        <Button
+          onClick={() => {
+            addproducttocart(productId);
+          }}
+          className="bg-emerald-600"
+        >
           add to cart
+        </Button>
+        <Button
+          onClick={() => {
+            addproducttowishlist(productId);
+          }}
+          className="bg-emerald-600"
+        >
+          add to wishlist
         </Button>
         <svg
           xmlns="http://www.w3.org/2000/svg"

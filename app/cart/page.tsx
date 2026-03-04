@@ -231,22 +231,27 @@ function handleupdate(productId:string,count:number){
           </div>
           <div className="w-1/4 ">
             <div className="p-5 m-3 border-2 rounded-2xl ">
-              <h2 className="text-2xl">
+              <h2 className="text-2xl text-center">
                 Number Of Cart Items{" "}
                 <span className="text-green-500 ">
                   {" "}
                   {cartdata?.numOfCartItems}
                 </span>
               </h2>
-              <h2 className="text-2xl  ">
+              <h2 className="text-2xl text-center ">
                 Total Price{" "}
                 <span className="text-green-500 ">
                   {cartdata?.data.totalCartPrice} EGP
                 </span>
               </h2>
-              <Button className="text-2xl my-4 bg-emerald-700">
+              <Button className="text-2xl w-full my-4 bg-emerald-700">
                 <Link href={`/checkout/${cartdata?.cartId}`}> Check Out</Link>
               </Button>
+              {/* <Button className="text-2xl w-full my-4 bg-emerald-700">
+                <Link href={`/userorders/${cartdata?.cartId}`}>
+                  See All Orders
+                </Link>
+              </Button> */}
             </div>
           </div>
         </div>

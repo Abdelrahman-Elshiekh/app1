@@ -1,6 +1,8 @@
 import Image from "next/image";
 import ProductCard from "./_components/Productcard/ProductCard";
 import { ProductItem } from "./types/Productenterface";
+import MainSlider from "./_components/MainSlider/MainSlider";
+import Categoryslider from "./_components/Categoryslider/Categoryslider";
 
 
 
@@ -13,8 +15,14 @@ export  default async function Home() {
 
 
   return (
-    <div className=" gap-5 grid md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 mt-5  ">
-      {allproducts.map((prod)=>{return <ProductCard key={prod._id} prod={prod} />;})}
-    </div>
+    <>
+      <MainSlider />
+      <Categoryslider/>
+      <div className=" gap-5 grid md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 mt-5  ">
+        {allproducts.map((prod) => {
+          return <ProductCard key={prod._id} prod={prod} />;
+        })}
+      </div>
+    </>
   );
 }
