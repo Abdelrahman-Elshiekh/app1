@@ -33,7 +33,7 @@ export default async function categorydetails(props: Myprops) {
 
   return (
     <>
-      <div className="grid md:grid-cols-3 min-h-[400px]   items-center justify-center pt-8">
+      <div className="grid md:grid-cols-3 min-h-[400px] space-y-5    items-center justify-center pt-8">
         <div className="col-span-1  ">
           <Image
             className="border-2 rounded-2xl"
@@ -44,28 +44,21 @@ export default async function categorydetails(props: Myprops) {
           />
         </div>
         <div className="col-span-2   ">
-          <Card className="relative p-8 ">
+          <Card className="relative  ">
             <CardHeader>
-              <CardAction></CardAction>
               <CardTitle className="text-4xl"> {singleproduct.name}</CardTitle>
               <div>
                 <CardDescription>
                   <p className="font-bold my-5">{singleproduct.slug}</p>
                 </CardDescription>
                 <CardDescription>
-                  <div className="flex justify-between">
-                    <span className="font-bold text-2xl">
-                      <span className="text-red-400 pe-2 text-2xl">
-                        {" "}
-                        createdAt{" "}
-                      </span>
+                  <div className="flex flex-col  justify-between">
+                    <span className="font-bold text-xl w-full  md:text-2xl">
+                      <span className="text-red-400 pe-2 "> createdAt </span>
                       {singleproduct.createdAt}{" "}
                     </span>
-                    <span className="font-bold text-2xl  ">
-                      <span className="text-red-400 pe-2 text-2xl">
-                        {" "}
-                        updatedAt{" "}
-                      </span>
+                    <span className="font-bold text-xl  md:text-2xl ">
+                      <span className="text-red-400 pe-2 "> updatedAt </span>
                       {singleproduct.updatedAt}
                     </span>
                   </div>

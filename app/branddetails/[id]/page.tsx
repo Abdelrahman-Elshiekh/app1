@@ -33,8 +33,8 @@ export default async function categorydetails(props: Myprops) {
 
   return (
     <>
-      <div className="grid md:grid-cols-3 min-h-[400px]   items-center justify-center pt-8">
-        <div className="col-span-1  ">
+      <div className="grid md:grid-cols-3 min-h-[400px] space-y-5 items-center justify-center pt-8">
+        <div className="col-span-1   ">
           <Image
             className="border-2 rounded-2xl"
             src={singleproduct.image}
@@ -43,7 +43,7 @@ export default async function categorydetails(props: Myprops) {
             alt="img"
           />
         </div>
-        <div className="col-span-2   ">
+        <div className="col-span-2      ">
           <Card className="relative p-8 ">
             <CardHeader>
               <CardAction></CardAction>
@@ -53,9 +53,9 @@ export default async function categorydetails(props: Myprops) {
                   <p className="font-bold my-5">{singleproduct.slug}</p>
                 </CardDescription>
                 <CardDescription>
-                  <div className="flex justify-between">
+                  <div className="flex flex-col justify-between ">
                     <span className="font-bold text-2xl">
-                      <span className="text-red-400 pe-2 text-2xl">
+                      <span className="text-red-400 pe-2 text-2xl w-fit">
                         {" "}
                         createdAt{" "}
                       </span>
