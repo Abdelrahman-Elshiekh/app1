@@ -43,17 +43,10 @@ export function DropdownMenuIcons({ Logout }: { Logout: () => void }) {
       </DropdownMenuTrigger>
       <DropdownMenuContent>
         <DropdownMenuItem>
-          {cartOwner ? (
-            <DropdownMenuItem>
-              <UserIcon className="mr-2" />
-              <Link href={`/userorders/${cartOwner}`}>See My Orders</Link>
-            </DropdownMenuItem>
-          ) : (
-            <DropdownMenuItem disabled>
-              <UserIcon className="mr-2" />
-              Loading Orders...
-            </DropdownMenuItem>
-          )}
+          <DropdownMenuItem>
+            <UserIcon className="mr-2" />
+            <Link href={`/userorders/${cartOwner}`}>See My Orders</Link>
+          </DropdownMenuItem>
         </DropdownMenuItem>
         <DropdownMenuItem onClick={Logout} variant="destructive">
           <LogOutIcon />

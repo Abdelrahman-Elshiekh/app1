@@ -27,7 +27,7 @@ export default function AddBTn({ productId }: { productId :string}) {
     mutationFn: addtowishlist,
     onSuccess: (data) => {
       toast.success(data?.message);
-      Quaryclient.invalidateQueries({ queryKey: ["get-cart"] });
+      Quaryclient.invalidateQueries({ queryKey: ["get-wishlist"] });
     },
     onError: (data) => {
       toast.error("login first");

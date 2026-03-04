@@ -54,10 +54,15 @@ toast.success("successfull Login");
 
   return (
     <>
-      <div className="bg-gray-400 w-1/2 p-5 border-2 rounded-2xl m-auto mt-9">
-        <h1 className="text-5xl my-9 text-red-500">Login Now</h1>
+      <div className="bg-gray-400 w-full max-w-2/4 p-6 md:p-8 border-2 rounded-2xl mx-auto mt-9">
+        <h1 className="text-3xl md:text-5xl my-6 text-red-500 text-center">
+          Login Now
+        </h1>
 
-        <form onSubmit={Form.handleSubmit(submitform)}>
+        <form
+          onSubmit={Form.handleSubmit(submitform)}
+          className="flex flex-col gap-4"
+        >
           <Controller
             name="email"
             control={Form.control}
@@ -73,7 +78,6 @@ toast.success("successfull Login");
                   placeholder="Enter your Email"
                   autoComplete="off"
                 />
-
                 {fieldState.invalid && (
                   <FieldError errors={[fieldState.error]} />
                 )}
@@ -96,7 +100,6 @@ toast.success("successfull Login");
                   placeholder="Enter your password"
                   autoComplete="off"
                 />
-
                 {fieldState.invalid && (
                   <FieldError errors={[fieldState.error]} />
                 )}
@@ -104,7 +107,7 @@ toast.success("successfull Login");
             )}
           />
 
-          <Button disabled={islaoding} className="w-full bg-emerald-900 my-4">
+          <Button disabled={islaoding} className="w-full bg-emerald-900 py-2">
             {islaoding ? (
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -112,7 +115,7 @@ toast.success("successfull Login");
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="size-6 animate-spin"
+                className="w-6 h-6 animate-spin mx-auto"
               >
                 <path
                   strokeLinecap="round"
@@ -126,8 +129,8 @@ toast.success("successfull Login");
           </Button>
         </form>
 
-        <Button className="text-2xl w-full my-4 bg-emerald-700">
-          <Link href={`/forgotpassword`}> Forgot Your  Password ?</Link>
+        <Button className="text-lg md:text-2xl w-full my-4 bg-emerald-700 py-2">
+          <Link href={`/forgotpassword`}>Forgot Your Password?</Link>
         </Button>
       </div>
     </>

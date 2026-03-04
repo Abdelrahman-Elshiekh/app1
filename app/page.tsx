@@ -18,7 +18,7 @@ export  default async function Home() {
     <>
       <MainSlider />
       <Categoryslider/>
-      <div className=" gap-5 grid md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 mt-5  ">
+      <div className=" gap-5 w-8/9 mx-auto grid md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 mt-5  ">
         {allproducts.map((prod) => {
           return <ProductCard key={prod._id} prod={prod} />;
         })}

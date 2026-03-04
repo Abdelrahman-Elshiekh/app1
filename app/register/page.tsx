@@ -62,139 +62,135 @@ export default function Register() {
 
   return (
     <>
-      <div className="w-1/2 mx-auto p-5 mt-9 bg-gray-300 rounded-2xl">
-        <h1 className="text-green-800 text-5xl">Register Now </h1>
-        <form onSubmit={form.handleSubmit(submitform)}>
-          <div className="mt-9  ">
-            <Controller
-              name="name"
-              control={form.control}
-              render={({ field, fieldState }) => (
-                <Field data-invalid={fieldState.invalid}>
-                  <FieldLabel className="  text-xl" htmlFor={field.name}>
-                    Name :{" "}
-                  </FieldLabel>
-                  <Input
-                    className="bg-white"
-                    {...field}
-                    id={field.name}
-                    aria-invalid={fieldState.invalid}
-                    placeholder="Enter Your Name "
-                  />
+      <div className="w-full max-w-3/4 mx-auto p-4 md:p-6 lg:p-8 mt-9 bg-gray-300 rounded-2xl">
+        <h1 className="text-3xl md:text-5xl text-green-800 text-center mb-6 md:mb-9">
+          Register Now
+        </h1>
 
-                  {fieldState.invalid && (
-                    <FieldError errors={[fieldState.error]} />
-                  )}
-                </Field>
-              )}
-            />
-          </div>
+        <form
+          onSubmit={form.handleSubmit(submitform)}
+          className="flex flex-col gap-4"
+        >
+          {/* Name */}
+          <Controller
+            name="name"
+            control={form.control}
+            render={({ field, fieldState }) => (
+              <Field data-invalid={fieldState.invalid}>
+                <FieldLabel htmlFor={field.name} className="text-lg md:text-xl">
+                  Name
+                </FieldLabel>
+                <Input
+                  {...field}
+                  id={field.name}
+                  aria-invalid={fieldState.invalid}
+                  placeholder="Enter Your Name"
+                  className="bg-white"
+                />
+                {fieldState.invalid && (
+                  <FieldError errors={[fieldState.error]} />
+                )}
+              </Field>
+            )}
+          />
 
-          <div className="mt-9  ">
-            <Controller
-              name="email"
-              control={form.control}
-              render={({ field, fieldState }) => (
-                <Field data-invalid={fieldState.invalid}>
-                  <FieldLabel className="  text-xl" htmlFor={field.name}>
-                    Email :{" "}
-                  </FieldLabel>
-                  <Input
-                    className="bg-white"
-                    {...field}
-                    id={field.name}
-                    aria-invalid={fieldState.invalid}
-                    placeholder="Enter Your Email "
-                  />
+          {/* Email */}
+          <Controller
+            name="email"
+            control={form.control}
+            render={({ field, fieldState }) => (
+              <Field data-invalid={fieldState.invalid}>
+                <FieldLabel htmlFor={field.name} className="text-lg md:text-xl">
+                  Email
+                </FieldLabel>
+                <Input
+                  {...field}
+                  id={field.name}
+                  aria-invalid={fieldState.invalid}
+                  placeholder="Enter Your Email"
+                  className="bg-white"
+                />
+                {fieldState.invalid && (
+                  <FieldError errors={[fieldState.error]} />
+                )}
+              </Field>
+            )}
+          />
 
-                  {fieldState.invalid && (
-                    <FieldError errors={[fieldState.error]} />
-                  )}
-                </Field>
-              )}
-            />
-          </div>
+          {/* Password */}
+          <Controller
+            name="password"
+            control={form.control}
+            render={({ field, fieldState }) => (
+              <Field data-invalid={fieldState.invalid}>
+                <FieldLabel htmlFor={field.name} className="text-lg md:text-xl">
+                  Password
+                </FieldLabel>
+                <Input
+                  type="password"
+                  {...field}
+                  id={field.name}
+                  aria-invalid={fieldState.invalid}
+                  placeholder="Enter Your Password"
+                  className="bg-white"
+                />
+                {fieldState.invalid && (
+                  <FieldError errors={[fieldState.error]} />
+                )}
+              </Field>
+            )}
+          />
 
-          <div className="mt-9  ">
-            <Controller
-              name="password"
-              control={form.control}
-              render={({ field, fieldState }) => (
-                <Field data-invalid={fieldState.invalid}>
-                  <FieldLabel className="  text-xl" htmlFor={field.name}>
-                    Password :{" "}
-                  </FieldLabel>
-                  <Input
-                    type="password"
-                    className="bg-white"
-                    {...field}
-                    id={field.name}
-                    aria-invalid={fieldState.invalid}
-                    placeholder="Enter Your Password "
-                  />
+          {/* RePassword */}
+          <Controller
+            name="rePassword"
+            control={form.control}
+            render={({ field, fieldState }) => (
+              <Field data-invalid={fieldState.invalid}>
+                <FieldLabel htmlFor={field.name} className="text-lg md:text-xl">
+                  Confirm Password
+                </FieldLabel>
+                <Input
+                  type="password"
+                  {...field}
+                  id={field.name}
+                  aria-invalid={fieldState.invalid}
+                  placeholder="Re-enter Your Password"
+                  className="bg-white"
+                />
+                {fieldState.invalid && (
+                  <FieldError errors={[fieldState.error]} />
+                )}
+              </Field>
+            )}
+          />
 
-                  {fieldState.invalid && (
-                    <FieldError errors={[fieldState.error]} />
-                  )}
-                </Field>
-              )}
-            />
-          </div>
-
-          <div className="mt-9  ">
-            <Controller
-              name="rePassword"
-              control={form.control}
-              render={({ field, fieldState }) => (
-                <Field data-invalid={fieldState.invalid}>
-                  <FieldLabel className="  text-xl" htmlFor={field.name}>
-                    RePassword :{" "}
-                  </FieldLabel>
-                  <Input
-                    type="password"
-                    className="bg-white"
-                    {...field}
-                    id={field.name}
-                    aria-invalid={fieldState.invalid}
-                    placeholder="Enter Your RePassword "
-                  />
-
-                  {fieldState.invalid && (
-                    <FieldError errors={[fieldState.error]} />
-                  )}
-                </Field>
-              )}
-            />
-          </div>
-
-          <div className="mt-9  ">
-            <Controller
-              name="phone"
-              control={form.control}
-              render={({ field, fieldState }) => (
-                <Field data-invalid={fieldState.invalid}>
-                  <FieldLabel className="  text-xl" htmlFor={field.name}>
-                    phone :{" "}
-                  </FieldLabel>
-                  <Input
-                    className="bg-white"
-                    {...field}
-                    id={field.name}
-                    aria-invalid={fieldState.invalid}
-                    placeholder="Enter Your phone "
-                  />
-
-                  {fieldState.invalid && (
-                    <FieldError errors={[fieldState.error]} />
-                  )}
-                </Field>
-              )}
-            />
-          </div>
+          {/* Phone */}
+          <Controller
+            name="phone"
+            control={form.control}
+            render={({ field, fieldState }) => (
+              <Field data-invalid={fieldState.invalid}>
+                <FieldLabel htmlFor={field.name} className="text-lg md:text-xl">
+                  Phone
+                </FieldLabel>
+                <Input
+                  {...field}
+                  id={field.name}
+                  aria-invalid={fieldState.invalid}
+                  placeholder="Enter Your Phone Number"
+                  className="bg-white"
+                />
+                {fieldState.invalid && (
+                  <FieldError errors={[fieldState.error]} />
+                )}
+              </Field>
+            )}
+          />
 
           <Button
-            className="my-5 w-full p-7 text-3xl bg-amber-600 "
             type="submit"
+            className="w-full py-4 md:py-5 text-xl md:text-2xl bg-amber-600 mt-4"
           >
             Submit
           </Button>
