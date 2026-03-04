@@ -21,8 +21,7 @@ export default function Slider({ categories }: { categories: Category[] }) {
           }}
           spaceBetween={0}
           slidesPerView={5}
-          onSlideChange={() => console.log("slide change")}
-          onSwiper={(swiper) => console.log(swiper)}
+         
         >
           {categories?.map((Category,index) => {
             return (

@@ -37,7 +37,7 @@ export default function AddBTn({ productId }: { productId :string}) {
     
   return (
     <>
-      <CardFooter className="flex justify-between">
+      <CardFooter className="flex justify-between justify-center">
         <Button
           onClick={() => {
             addproducttocart(productId);

@@ -20,7 +20,7 @@ export default function Checkoutform({ cartId }: { cartId :string}) {
 
   async function paycash(cartId: string, shippingAddress: shipping) {
     const response = await paycashorder(cartId, shippingAddress);
-    console.log(response);
+   
     if(response.status=="success"){
         toast.success('order will be delivered soon')
         window.location.href='/'
@@ -33,7 +33,6 @@ export default function Checkoutform({ cartId }: { cartId :string}) {
 
   async function payonline(cartId: string, shippingAddress: shipping) {
     const response = await payonlineorder(cartId, shippingAddress);
-    console.log(response);
     if (response.status == "success") {
       window.location.href = response.session.url;
     } else {

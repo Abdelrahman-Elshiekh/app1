@@ -1,10 +1,10 @@
 'use server'
 import { getAccessToken } from "@/app/Auth/getaccesstoken";
-import { METHODS } from "http";
-import { json } from "zod";
+
 
 export async function addtocart(productId:string) {
-const token=await getAccessToken()
+const  token = await getAccessToken();
+
 
 if(!token){
     throw new Error("unauthorized....")
@@ -22,7 +22,7 @@ if(!token){
     }),
   });
 const payload=await response?.json()
-console.log(payload);
+
 return payload
 
 }

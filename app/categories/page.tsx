@@ -10,7 +10,6 @@ export  default async function categories() {
  
   let { data: allcategories }: { data: Daum[] } = await response.json();
   
-
  
 
 

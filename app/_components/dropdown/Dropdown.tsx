@@ -16,9 +16,26 @@ import {
   SettingsIcon,
   UserIcon,
 } from "lucide-react"
+import { useQuery } from '@tanstack/react-query';
+import { CartInterface } from '@/app/types/cart-interface';
 
 
 export function DropdownMenuIcons({ Logout }: { Logout: () => void }) {
+
+  const {
+    data: cartdata,
+    isLoading,
+    isError,
+  } = useQuery<CartInterface>({
+    queryKey: ["get-cart"],
+    queryFn: async () => {
+      const resp = await fetch("/api/cart");
+      const payload = await resp.json();
+      return payload;
+    },
+  });
+  const cartOwner = cartdata?.data?.cartOwner;
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -26,8 +43,17 @@ export function DropdownMenuIcons({ Logout }: { Logout: () => void }) {
       </DropdownMenuTrigger>
       <DropdownMenuContent>
         <DropdownMenuItem>
-          <UserIcon />
-          <Link href={"/profile"}>Profile</Link>
+          {cartOwner ? (
+            <DropdownMenuItem>
+              <UserIcon className="mr-2" />
+              <Link href={`/userorders/${cartOwner}`}>See My Orders</Link>
+            </DropdownMenuItem>
+          ) : (
+            <DropdownMenuItem disabled>
+              <UserIcon className="mr-2" />
+              Loading Orders...
+            </DropdownMenuItem>
+          )}
         </DropdownMenuItem>
         <DropdownMenuItem onClick={Logout} variant="destructive">
           <LogOutIcon />

@@ -1,13 +1,12 @@
 import { NextAuthOptions } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
-import { json } from "zod";
+
 import { failedlogin, successlogin } from "./types/authinterface";
 
 export const AuthOptions: NextAuthOptions = {
-    pages:{
-        signIn:'/login'
-
-    },
+  pages: {
+    signIn: "/login",
+  },
   providers: [
     Credentials({
       name: "credentials",
@@ -16,7 +15,6 @@ export const AuthOptions: NextAuthOptions = {
         password: {},
       },
       authorize: async (credentials) => {
-         
         const response = await fetch(`${process.env.API}/auth/signin`, {
           method: "POST",
           body: JSON.stringify({
@@ -28,36 +26,39 @@ export const AuthOptions: NextAuthOptions = {
           },
         });
 
-        const payload : failedlogin | successlogin =await response.json()
+        const payload: failedlogin | successlogin = await response.json();
         console.log(payload);
-        
-            if("token" in payload){
-              return {
-                id: "",
-                user: payload.user,
-                token: payload.token,
-              };
-            }else{
-              throw new Error("error")
-            }
-       
+
+        if ("token" in payload) {
+          return {
+            id: payload.token,
+            user: payload.user,
+            token: payload.token,
+          };
+        } else {
+          throw new Error("error");
+        }
       },
     }),
   ],
- callbacks:{
+  callbacks: {
+    jwt: ({ token, user }) => {
+      if (user) {
+        token.token = user.token; // نخزن التوكن
+        token.user = user.user;
 
-  jwt:({token,user})=>{
-    if(user){
-      token.user = user.user,
-       token.token = user.token
-    }
-    return token
+        try {
+          const decoded: any = jwt.decode(user.token);
+          token.user.id = decoded?.id || decoded?.sub; 
+        } catch (err) {
+          console.error("Error decoding JWT:", err);
+        }
+      }
+      return token;
+    },
+    session: ({ token, session }) => {
+      session.user = token.user;
+      return session;
+    },
   },
-  session:({token,session})=>{
-    session.user=token.user
-    return session
-  }
-
-
- }
 };

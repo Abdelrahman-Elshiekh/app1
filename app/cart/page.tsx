@@ -247,11 +247,6 @@ function handleupdate(productId:string,count:number){
               <Button className="text-2xl w-full my-4 bg-emerald-700">
                 <Link href={`/checkout/${cartdata?.cartId}`}> Check Out</Link>
               </Button>
-              {/* <Button className="text-2xl w-full my-4 bg-emerald-700">
-                <Link href={`/userorders/${cartdata?.cartId}`}>
-                  See All Orders
-                </Link>
-              </Button> */}
             </div>
           </div>
         </div>
