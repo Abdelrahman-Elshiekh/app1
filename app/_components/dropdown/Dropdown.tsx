@@ -1,3 +1,4 @@
+
 import userimage from '../../../assets/images/user.png'
 import { Button } from "@/components/ui/button";
 import {
@@ -22,7 +23,7 @@ import { CartInterface } from '@/app/types/cart-interface';
 
 export function DropdownMenuIcons({ Logout }: { Logout: () => void }) {
 
-  const {
+const {
     data: cartdata,
     isLoading,
     isError,
@@ -43,9 +44,15 @@ export function DropdownMenuIcons({ Logout }: { Logout: () => void }) {
       </DropdownMenuTrigger>
       <DropdownMenuContent>
         <DropdownMenuItem>
-          <DropdownMenuItem>
+          <DropdownMenuItem disabled={!cartOwner}>
             <UserIcon className="mr-2" />
-            <Link href={`/userorders/${cartOwner}`}>See My Orders</Link>
+            {cartOwner ? (
+              <Link href={`/userorders/${cartOwner}`}>See My Orders</Link>
+            ) : (
+              <span className="text-gray-400 cursor-not-allowed">
+                See My Orders
+              </span>
+            )}
           </DropdownMenuItem>
         </DropdownMenuItem>
         <DropdownMenuItem onClick={Logout} variant="destructive">
@@ -60,34 +67,3 @@ export function DropdownMenuIcons({ Logout }: { Logout: () => void }) {
 
 
 
-
-//
-// import {
-//   CreditCardIcon,
-//   LogOutIcon,
-//   SettingsIcon,
-//   UserIcon,
-// } from "lucide-react"
-
-// export function DropdownMenuIcons({ Logout }: { Logout: () => void }) {
-//   return (
-//     <DropdownMenu>
-//       <DropdownMenuTrigger asChild>
-//         <Button variant="outline"><Image width={30} height={30} alt='user' src={userimage}/></Button>
-//       </DropdownMenuTrigger>
-//       <DropdownMenuContent>
-//         <DropdownMenuItem>
-//  <Link href={"/profile"}>
-//    <UserIcon />
-//     Profile
-//  </Link>;
-//           
-//         </DropdownMenuItem>
-//         <DropdownMenuItem onClick={Logout} variant="destructive">
-//           <LogOutIcon />
-//           Log out
-//         </DropdownMenuItem>
-//       </DropdownMenuContent>
-//     </DropdownMenu>
-//   )
-// }
