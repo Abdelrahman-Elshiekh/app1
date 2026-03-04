@@ -44,7 +44,7 @@ export default async function categorydetails(props: Myprops) {
           />
         </div>
         <div className="col-span-2      ">
-          <Card className="relative p-8 ">
+          <Card className="relative p-8  ">
             <CardHeader>
               <CardAction></CardAction>
               <CardTitle className="text-4xl"> {singleproduct.name}</CardTitle>

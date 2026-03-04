@@ -54,7 +54,7 @@ toast.success("successfull Login");
 
   return (
     <>
-      <div className="bg-gray-400 w-full max-w-2/4 p-6 md:p-8 border-2 rounded-2xl mx-auto mt-9">
+      <div className="bg-gray-400 w-full md:w-3/4 p-6 md:p-8 border-2 rounded-2xl mx-auto mt-9">
         <h1 className="text-3xl md:text-5xl my-6 text-red-500 text-center">
           Login Now
         </h1>
@@ -130,7 +130,7 @@ toast.success("successfull Login");
         </form>
 
         <Button className="text-lg md:text-2xl w-full my-4 bg-emerald-700 py-2">
-          <Link href={`/forgotpassword`}>Forgot Your Password?</Link>
+          <Link className="w-3/4" href={`/forgotpassword`}>Forgot Your Password?</Link>
         </Button>
       </div>
     </>

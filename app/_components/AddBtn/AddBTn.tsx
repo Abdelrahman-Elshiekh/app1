@@ -19,6 +19,9 @@ export default function AddBTn({ productId }: { productId :string}) {
       },
       onError:(data)=>{
         toast.error('login first')
+        setTimeout(() => {
+          window.location.href = "/login";
+        }, 1000);
       }
     });
    
@@ -31,6 +34,9 @@ export default function AddBTn({ productId }: { productId :string}) {
     },
     onError: (data) => {
       toast.error("login first");
+      setTimeout(() => {
+        window.location.href = "/login";
+      }, 1000);
     },
   });
    

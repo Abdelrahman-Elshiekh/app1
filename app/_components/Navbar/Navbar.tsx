@@ -110,11 +110,8 @@ export default function Navbar() {
                     <li key={elem.content}>
                       <Link
                         href={elem.href}
-                        className={
-                          active === elem.href
-                            ? "active block py-2 px-3  bg-brand rounded md:bg-transparent md:text-fg-brand md:p-0"
-                            : "block py-2 px-3  bg-brand rounded md:bg-transparent md:text-fg-brand md:p-0"
-                        }
+                        className={`block py-2 px-3 rounded md:bg-transparent md:p-0 
+  ${active === elem.href ? "text-2xl font-bold text-fg-brand text-red-500" : "text-lg font-normal text-fg-brand"}`}
                         aria-current="page"
                       >
                         {elem.content}
@@ -123,7 +120,7 @@ export default function Navbar() {
                   );
                 })}
               </ul>
-              <ul className="font-medium flex flex-col space-y-8 justify-center text-2xl items-center  p-4 md:p-0 rounded-base bg-neutral-secondary-soft md:flex-row md:space-x-8 md:bg-neutral-primary">
+              <ul className="font-medium flex flex-col  justify-center text-2xl items-center  px-4 md:p-0 rounded-base bg-neutral-secondary-soft md:flex-row md:space-x-8 md:bg-neutral-primary">
                 {status === "authenticated" ? (
                   <>
                     <li className=" font-semibold">
@@ -212,11 +209,8 @@ export default function Navbar() {
                     <li key={elem.content}>
                       <Link
                         href={elem.href}
-                        className={
-                          active === elem.href
-                            ? "active block py-2 px-3  bg-brand rounded md:bg-transparent md:text-fg-brand md:p-0"
-                            : "block py-2 px-3  bg-brand rounded md:bg-transparent md:text-fg-brand md:p-0"
-                        }
+                        className={`block py-2 px-3 rounded md:bg-transparent md:p-0 
+  ${active === elem.href ? "text-xl font-bold text-fg-brand text-red-500" : "text-lg font-normal text-fg-brand"}`}
                         aria-current="page"
                       >
                         {elem.content}

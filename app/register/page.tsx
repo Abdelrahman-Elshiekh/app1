@@ -62,7 +62,7 @@ export default function Register() {
 
   return (
     <>
-      <div className="w-full max-w-3/4 mx-auto p-4 md:p-6 lg:p-8 mt-9 bg-gray-300 rounded-2xl">
+      <div className="w-full md:w-3/4  mx-auto p-4 md:p-6 lg:p-8 mt-9 bg-gray-300 rounded-2xl">
         <h1 className="text-3xl md:text-5xl text-green-800 text-center mb-6 md:mb-9">
           Register Now
         </h1>

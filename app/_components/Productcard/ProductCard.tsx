@@ -28,8 +28,8 @@ export default function ProductCard( {prod}:{prod :  ProductItem}) {
           alt={prod.title}
           className="  w-full "
         />
-        <CardHeader>
-          <CardAction>
+        <CardHeader className="mt-8">
+          <CardAction >
             <Badge variant="secondary">{prod.brand.name}</Badge>
           </CardAction>
           <CardTitle>{prod.title.split(" ").slice(0, 2).join("")}</CardTitle>
